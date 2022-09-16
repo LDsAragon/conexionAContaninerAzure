@@ -1,8 +1,9 @@
-package azureClientIntegration.service;
+package azure.client.integration.service;
 
 
-import azureClientIntegration.Exceptions.CustomAzureException;
+import azure.client.integration.exceptions.CustomAzureException;
 import com.azure.storage.blob.models.BlobStorageException;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.UncheckedIOException;
 import java.util.concurrent.Callable;
@@ -11,6 +12,7 @@ import java.util.concurrent.Callable;
  * Manages the errors classes that extends this one.
  * @param <T> The type ob object to convert the output of the callable function.
  */
+@Slf4j
 public class ErrorManagerImpl<T> {
 
     public T execute(Callable<T> callable) {
@@ -18,10 +20,10 @@ public class ErrorManagerImpl<T> {
         try {
             return callable.call();
         } catch (BlobStorageException blobStorageException) {
-            System.out.println(blobStorageException.getMessage());
+            log.info(blobStorageException.getMessage());
             throw new CustomAzureException("CONNECT TO CLIENT", blobStorageException.getCause().getMessage(), blobStorageException.getMessage());
         } catch (UncheckedIOException uncheckedIOException) {
-            System.out.println(uncheckedIOException.getMessage());
+            log.info(uncheckedIOException.getMessage());
             throw new CustomAzureException("CANNOT RECOVER FILE OR CREATE FOLDER", uncheckedIOException.getCause().getMessage(), uncheckedIOException.getMessage());
         } catch (Exception ex) {
             ex.printStackTrace();

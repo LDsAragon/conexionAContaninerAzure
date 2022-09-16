@@ -1,10 +1,10 @@
-package integrationFixed.utils;
+package azure.client.integration.utils;
 
 import com.azure.storage.blob.BlobClient;
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
-import integrationFixed.constants.ConfigVars;
+import azure.client.integration.constants.ConfigVars;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +19,7 @@ public class AzureClient {
      * @param container    The folder in azure to use.
      * @return The container :D.
      */
-    public static BlobContainerClient generateContainer(String endpointProp, String container) {
+    public BlobContainerClient generateContainer(String endpointProp, String container) {
         log.info("Generando contenedor para la carpeta : [" + container + "] que esta en la url [" + endpointProp +"]") ;
         BlobServiceClient blobServiceClientByEndpoint = new BlobServiceClientBuilder().endpoint(endpointProp).buildClient();
         return blobServiceClientByEndpoint.getBlobContainerClient(container);
@@ -33,7 +33,7 @@ public class AzureClient {
      * @param localPath           The path to download the file to.
      * @param containerClient     The azure client connected to the provided container and a folder.
      */
-    public static Boolean downloadFile(String fileNameInContainer, String fileNameToDownload, String localPath, BlobContainerClient containerClient) {
+    public Boolean downloadFile(String fileNameInContainer, String fileNameToDownload, String localPath, BlobContainerClient containerClient) {
         log.info("VAMOS A DESCARGAR: " + fileNameToDownload + " que esta en sabrmdev -> container " + containerClient.getBlobContainerName() ) ;
         BlobClient blobClient = containerClient.getBlobClient(fileNameInContainer);
         boolean wasDownloaded = Boolean.FALSE;
@@ -60,7 +60,7 @@ public class AzureClient {
      * @param fileNameToUpload The name of the file to upload.
      * @param containerClient  The azure client connected to the provided container and a folder.
      */
-    public static Boolean uploadFile(String localPath, String fileNameToUpload, BlobContainerClient containerClient) {
+    public Boolean uploadFile(String localPath, String fileNameToUpload, BlobContainerClient containerClient) {
         log.info("VAMOS A CARGAR: " + fileNameToUpload + " que esta en folderPath a sabrmdev -> container " + ConfigVars.CONTAINER );
 
         FileChecker.createDirectory(localPath);

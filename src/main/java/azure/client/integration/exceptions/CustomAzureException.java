@@ -1,4 +1,4 @@
-package integrationFixed.exceptions;
+package azure.client.integration.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;

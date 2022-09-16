@@ -1,7 +1,7 @@
-package integrationFixed.service;
+package azure.client.integration.service;
 
-import integrationFixed.constants.ConfigVars;
-import integrationFixed.utils.AzureClient;
+import azure.client.integration.utils.AzureClient;
+import azure.client.integration.constants.ConfigVars;
 import com.azure.storage.blob.BlobContainerClient;
 
 /**

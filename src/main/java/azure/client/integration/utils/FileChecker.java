@@ -1,4 +1,4 @@
-package integrationFixed.utils;
+package azure.client.integration.utils;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
