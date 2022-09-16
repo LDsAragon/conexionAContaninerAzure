@@ -1,10 +1,12 @@
 package azure.client.integration.utils;
 
+import java.io.File;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
-
+/**
+ * Utilidad para validar la existencia de archivos y directorios.
+ */
 @Slf4j
 @UtilityClass
 public class FileChecker {
@@ -18,7 +20,7 @@ public class FileChecker {
    */
   public boolean checkDirectoryExistence(String directory) {
 
-    Boolean doesExist;
+    boolean doesExist;
 
     File file = new File(directory);
 
@@ -37,7 +39,7 @@ public class FileChecker {
    */
   public boolean createDirectory(String directory) {
 
-    Boolean wasCreated = Boolean.FALSE;
+    boolean wasCreated = Boolean.FALSE;
 
     File file = new File(directory);
 
@@ -51,13 +53,13 @@ public class FileChecker {
 
 
   /**
-   * Checks if a file exists in the directory and also the existence of the directory
+   * Checks if a file exists in the directory and also the existence of the directory.
    *
    * @return True if the file exists.
    */
   public boolean checkFileExistence(String directory, String fileName) {
 
-    Boolean doesExist = Boolean.FALSE;
+    boolean doesExist = Boolean.FALSE;
 
     File file = new File(directory + fileName);
 
@@ -70,6 +72,11 @@ public class FileChecker {
   }
 
 
+  /**
+   * Tester de la implementación de la clase.
+   *
+   * @param args nada.
+   * */
   public static void main(String[] args) {
 
     String directory = "descargas";
