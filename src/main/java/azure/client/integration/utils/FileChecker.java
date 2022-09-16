@@ -9,77 +9,78 @@ import java.io.File;
 @UtilityClass
 public class FileChecker {
 
-    final String arrows = "] ? -->> [";
+  final String arrows = "] ? -->> [";
 
-    /**
-     * Checks if a directory exists.
-     * @return True if the directory exists.
-     */
-    public boolean checkDirectoryExistence(String directory) {
+  /**
+   * Checks if a directory exists.
+   *
+   * @return True if the directory exists.
+   */
+  public boolean checkDirectoryExistence(String directory) {
 
-        Boolean doesExist;
+    Boolean doesExist;
 
-        File file = new File(directory);
+    File file = new File(directory);
 
-        doesExist = file.exists() ;
+    doesExist = file.exists();
 
 
-        log.info("¿Existe el directorio [" + directory + arrows + doesExist + "]");
+    log.info("¿Existe el directorio [" + directory + arrows + doesExist + "]");
 
-        return doesExist ;
+    return doesExist;
+  }
+
+  /**
+   * Creates a directory.
+   *
+   * @return True if the directory was created.
+   */
+  public boolean createDirectory(String directory) {
+
+    Boolean wasCreated = Boolean.FALSE;
+
+    File file = new File(directory);
+
+    if (!file.exists()) {
+      wasCreated = file.mkdirs();
     }
+    log.info("¿Fue creado el directorio [" + directory + arrows + wasCreated + "]");
 
-    /**
-     * Creates a directory.
-     * @return True if the directory was created.
-     */
-    public boolean createDirectory(String directory) {
+    return wasCreated;
+  }
 
-        Boolean wasCreated = Boolean.FALSE ;
 
-        File file = new File(directory);
+  /**
+   * Checks if a file exists in the directory and also the existence of the directory
+   *
+   * @return True if the file exists.
+   */
+  public boolean checkFileExistence(String directory, String fileName) {
 
-        if(!file.exists()) {
-            wasCreated = file.mkdirs();
-        }
-        log.info("¿Fue creado el directorio [" + directory + arrows + wasCreated + "]");
+    Boolean doesExist = Boolean.FALSE;
 
-        return wasCreated ;
+    File file = new File(directory + fileName);
+
+    if (checkDirectoryExistence(directory)) {
+      doesExist = file.exists();
     }
+    log.info("¿Existe el archivo [" + fileName + arrows + doesExist + "]");
+
+    return doesExist;
+  }
 
 
-    /**
-     *Checks if a file exists in the directory and also the existence of the directory
-     * @return True if the file exists.
-     */
-    public boolean checkFileExistence(String directory, String fileName) {
+  public static void main(String[] args) {
 
-        Boolean doesExist = Boolean.FALSE ;
+    String directory = "descargas";
+    String fileName = "descargame.txt";
 
-        File file = new File(directory+fileName);
+    FileChecker.checkDirectoryExistence(directory);
 
-        if(checkDirectoryExistence(directory)){
-            doesExist = file.exists() ;
-        }
-        log.info("¿Existe el archivo [" + fileName + arrows + doesExist + "]");
+    FileChecker.createDirectory(directory);
 
-        return doesExist ;
-    }
+    FileChecker.checkFileExistence(directory, fileName);
 
-
-
-
-    public static void main(String[] args) {
-
-        String directory = "descargas" ;
-        String fileName = "descargame.txt" ;
-
-        FileChecker.checkDirectoryExistence(directory);
-
-        FileChecker.createDirectory(directory);
-
-        FileChecker.checkFileExistence(directory,fileName) ;
-
-    }
+  }
 
 }

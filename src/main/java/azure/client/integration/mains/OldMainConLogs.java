@@ -1,4 +1,4 @@
-package azure.client.integration;
+package azure.client.integration.mains;
 
 import azure.client.integration.constants.ConfigVars;
 import azure.client.integration.utils.AzureClient;
