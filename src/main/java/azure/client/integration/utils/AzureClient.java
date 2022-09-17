@@ -66,9 +66,7 @@ public class AzureClient {
    */
   public Boolean uploadFile(String localPath, String fileNameToUpload,
                             BlobContainerClient containerClient) {
-    log.info(
-        "VAMOS A CARGAR: " + fileNameToUpload + " que esta en folderPath a sabrmdev -> container " +
-            ConfigVars.CONTAINER);
+    log.info("VAMOS A CARGAR: " + fileNameToUpload + " que esta en [" + localPath + "]");
 
     FileChecker.createDirectory(localPath);
     boolean checkFileExistence = FileChecker.checkFileExistence(localPath, fileNameToUpload);
