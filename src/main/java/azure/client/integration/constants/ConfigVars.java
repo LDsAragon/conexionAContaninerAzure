@@ -14,14 +14,20 @@ public class ConfigVars {
   /*
    * SAS key from Azure Container.
    */
-  @Value("${endpoint.azure.container}")
+  @Value("${azure.client.endpoint}")
   public String endpointProperty;
 
   /*
    * Name from the folder in the Azure Container.
    */
-  @Value("${endpoint.azure.container}")
-  public String saftContainerName ;
+  @Value("${azure.client.container}")
+  public String saftProperty;
+
+  /*
+   * Name from the folder in the Azure Container.
+   */
+  @Value("${azure.client.localPath}")
+  public String localPathProperty;
 
   /*
    * SAS key from Azure Container.
