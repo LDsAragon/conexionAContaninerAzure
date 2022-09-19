@@ -66,7 +66,7 @@ public class FileChecker {
     if (checkDirectoryExistence(directory)) {
       doesExist = file.exists();
     }
-    log.info("Does the directory exist? [" + fileName + arrows + doesExist + "]");
+    log.info("Does the file exist? [" + fileName + arrows + doesExist + "]");
 
     return doesExist;
   }
