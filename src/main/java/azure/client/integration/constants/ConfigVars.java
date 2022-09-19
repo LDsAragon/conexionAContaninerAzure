@@ -20,8 +20,8 @@ public class ConfigVars {
   /*
    * Name from the folder in the Azure Container.
    */
-  @Value("${azure.client.container}")
-  public String saftProperty;
+  @Value("${azure.client.folder}")
+  public String folderProperty;
 
   /*
    * Name from the folder in the Azure Container.
@@ -32,13 +32,13 @@ public class ConfigVars {
   /*
    * SAS key from Azure Container.
    */
-  public static final String ENDPOINT_PROP_FOR_MAIN =
+  public static final String ENDPOINT_PROP =
       "https://sabrmdev.blob.core.windows.net/saft?sp=racwdli&st=2022-09-15T13:34:40Z&se=2025-09-15T21:34:40Z&spr=https&sv=2021-06-08&sr=c&sig=QurqTW1i7%2BId%2FwD8ZQuIPntdzJ8XGHxnlaJWI7P8qAw%3D";
 
   /*
    * Name from the folder in the Azure Container.
    */
-  public static final String CONTAINER = "saft";
+  public static final String FOLDER = "saft";
 
   /**
    * Overwrite files both locally and in the azure container.

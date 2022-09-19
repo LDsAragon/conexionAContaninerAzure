@@ -11,8 +11,8 @@ import com.azure.storage.blob.BlobContainerClient;
 public class ContainerService extends ErrorManagerImpl<BlobContainerClient> {
 
   public BlobContainerClient createContainer() {
-    return execute(() -> AzureClient.generateContainer(ConfigVars.ENDPOINT_PROP_FOR_MAIN,
-        ConfigVars.CONTAINER));
+    return execute(() -> AzureClient.generateContainer(ConfigVars.ENDPOINT_PROP,
+        ConfigVars.FOLDER));
   }
 
 

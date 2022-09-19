@@ -46,7 +46,7 @@ public class OldMainConLogs {
       fileNameToUpload = "noExistoXD.txt";
 
       BlobContainerClient containerClient =
-          AzureClient.generateContainer(ConfigVars.ENDPOINT_PROP_FOR_MAIN, ConfigVars.CONTAINER);
+          AzureClient.generateContainer(ConfigVars.ENDPOINT_PROP, ConfigVars.FOLDER);
       AzureClient.downloadFile(fileNameInContainer, fileNameToDownload, ConfigVars.LOCAL_PATH,
           containerClient);
       AzureClient.uploadFile(ConfigVars.LOCAL_PATH, fileNameToUpload, containerClient);

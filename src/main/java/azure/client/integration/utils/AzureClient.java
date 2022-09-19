@@ -42,7 +42,7 @@ public class AzureClient {
   public Boolean downloadFile(String fileNameInContainer, String fileNameToDownload,
                               String localPath, BlobContainerClient containerClient) {
     log.info("We are going to download: " + fileNameToDownload + " which is in "
-        + containerClient.getBlobContainerName() + " -> container " + ConfigVars.CONTAINER);
+        + containerClient.getBlobContainerName() + " -> container " + ConfigVars.FOLDER);
     BlobClient blobClient = containerClient.getBlobClient(fileNameInContainer);
     boolean wasDownloaded = Boolean.FALSE;
 
@@ -79,7 +79,7 @@ public class AzureClient {
     BlobClient blobClient2 = containerClient.getBlobClient(fileNameToUpload);
     if (checkFileExistence) {
       log.info("Uploading blob to: " + containerClient.getBlobContainerName() + " -> container "
-          + ConfigVars.CONTAINER);
+          + ConfigVars.FOLDER);
       blobClient2.uploadFromFile(localPath + fileNameToUpload, ConfigVars.OVERWRITE_FILES);
       wasUploaded = true;
     } else {
