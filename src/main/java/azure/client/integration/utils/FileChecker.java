@@ -27,7 +27,7 @@ public class FileChecker {
     doesExist = file.exists();
 
 
-    log.info("¿Existe el directorio [" + directory + arrows + doesExist + "]");
+    log.info("Does the directory exist? [" + directory + arrows + doesExist + "]");
 
     return doesExist;
   }
@@ -46,7 +46,7 @@ public class FileChecker {
     if (!file.exists()) {
       wasCreated = file.mkdirs();
     }
-    log.info("¿Fue creado el directorio [" + directory + arrows + wasCreated + "]");
+    log.info("Has the directory been created? [" + directory + arrows + wasCreated + "]");
 
     return wasCreated;
   }
@@ -66,7 +66,7 @@ public class FileChecker {
     if (checkDirectoryExistence(directory)) {
       doesExist = file.exists();
     }
-    log.info("¿Existe el archivo [" + fileName + arrows + doesExist + "]");
+    log.info("Does the directory exist? [" + fileName + arrows + doesExist + "]");
 
     return doesExist;
   }

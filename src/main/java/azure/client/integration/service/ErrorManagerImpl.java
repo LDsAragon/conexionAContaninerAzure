@@ -3,34 +3,40 @@ package azure.client.integration.service;
 
 import azure.client.integration.exceptions.CustomAzureException;
 import com.azure.storage.blob.models.BlobStorageException;
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.UncheckedIOException;
 import java.util.concurrent.Callable;
+import lombok.extern.slf4j.Slf4j;
+
 
 /**
- * Manages the errors classes that extends this one.
+ * Encapsulates a Try Catch and diminishes verbosity
+ * Manages the errors of classes like [BlobContainerClient] and java IO.
  *
- * @param <T> The type ob object to convert the output of the callable function.
+ * @param <T> The type of object to convert the output of the callable function.
  */
 @Slf4j
 public class ErrorManagerImpl<T> {
 
+  /**
+   * Execute, runs a function passed as a lambda expresión and returns its result object.
+   *
+   * @param callable The function to be called inside the try catch.
+   * @return The return of the function passed
+   */
   public T execute(Callable<T> callable) {
 
     try {
       return callable.call();
     } catch (BlobStorageException blobStorageException) {
       log.info(blobStorageException.getMessage());
-      throw new CustomAzureException("CONNECT TO CLIENT",
+      throw new CustomAzureException("Error : cannot connect to client or download/upload file",
           blobStorageException.getCause().getMessage(), blobStorageException.getMessage());
-    } catch (UncheckedIOException uncheckedIOException) {
-      log.info(uncheckedIOException.getMessage());
-      throw new CustomAzureException("CANNOT RECOVER FILE OR CREATE FOLDER",
-          uncheckedIOException.getCause().getMessage(), uncheckedIOException.getMessage());
+    } catch (UncheckedIOException ioException) {
+      log.info(ioException.getMessage());
+      throw new CustomAzureException("Error : cannot create folder/file",
+          ioException.getCause().getMessage(), ioException.getMessage());
     } catch (Exception ex) {
-      ex.printStackTrace();
-      throw new CustomAzureException("ERROR", ex.getCause().getMessage(), ex.getMessage());
+      throw new CustomAzureException("Error : ", ex.getCause().getMessage(), ex.getMessage());
     }
 
   }
