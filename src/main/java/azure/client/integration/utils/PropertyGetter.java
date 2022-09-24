@@ -41,8 +41,8 @@ public class PropertyGetter {
     String endpointConfigured = azureEndpoint;
     String result = endpointHardcoded;
 
-    if (endpointConfigured != null &&
-        !endpointConfigured.isEmpty()) {
+    if (endpointConfigured != null
+        && !endpointConfigured.isEmpty()) {
       result = endpointConfigured;
     }
 
@@ -61,8 +61,8 @@ public class PropertyGetter {
     String folderConfigured = azureFolder;
     String result = folderHardcoded;
 
-    if (folderConfigured != null &&
-        !folderConfigured.isEmpty()) {
+    if (folderConfigured != null
+        && !folderConfigured.isEmpty()) {
       result = folderConfigured;
     }
 
@@ -85,8 +85,8 @@ public class PropertyGetter {
     String localPathConfigured = localFolder;
     String result = localPathHardcoded;
 
-    if (localPathConfigured != null &&
-        !localPathConfigured.isEmpty()) {
+    if (localPathConfigured != null
+        && !localPathConfigured.isEmpty()) {
       result = localPathConfigured;
     }
 
