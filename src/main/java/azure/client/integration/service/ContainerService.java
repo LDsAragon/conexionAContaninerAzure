@@ -1,18 +1,21 @@
 package azure.client.integration.service;
 
-import azure.client.integration.constants.ConfigVars;
+
 import azure.client.integration.utils.AzureClient;
+import azure.client.integration.utils.PropertyGetter;
 import com.azure.storage.blob.BlobContainerClient;
+//import org.springframework.stereotype.Service;
 
 /**
- * Class created to be a proxy for the execution of the Azure client
- * and encapsulate its possible errors with multiple try catch.
+ * Class created to be a proxy for the execution of the Azure client,
+ * And encapsulate its possible errors with multiple try catch.
  */
-public class ContainerService extends ErrorManagerImpl<BlobContainerClient> {
+//@Service
+public class ContainerService extends ErrorManager<BlobContainerClient> {
 
   public BlobContainerClient createContainer() {
-    return execute(() -> AzureClient.generateContainer(ConfigVars.ENDPOINT_PROP,
-        ConfigVars.FOLDER));
+    return execute(() -> AzureClient.generateContainer(PropertyGetter.getEndpoint(),
+        PropertyGetter.getAzureFolder()));
   }
 
 

@@ -46,10 +46,10 @@ public class OldMainConLogs {
       fileNameToUpload = "noExistoXD.txt";
 
       BlobContainerClient containerClient =
-          AzureClient.generateContainer(ConfigVars.ENDPOINT_PROP, ConfigVars.FOLDER);
-      AzureClient.downloadFile(fileNameInContainer, fileNameToDownload, ConfigVars.LOCAL_PATH,
+          AzureClient.generateContainer(ConfigVars.AZURE_SAS_KEY, ConfigVars.AZURE_FOLDER);
+      AzureClient.downloadFile(fileNameInContainer, fileNameToDownload, ConfigVars.LOCAL_FOLDER,
           containerClient);
-      AzureClient.uploadFile(ConfigVars.LOCAL_PATH, fileNameToUpload, containerClient);
+      AzureClient.uploadFile(ConfigVars.LOCAL_FOLDER, fileNameToUpload, containerClient);
 
     } catch (BlobStorageException | UncheckedIOException exception) {
       log.info(exception.getMessage());

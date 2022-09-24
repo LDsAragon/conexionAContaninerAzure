@@ -19,7 +19,7 @@ public class CustomAzureException extends RuntimeException {
    *
    * @param actionType A general description of the action being performed.
    * @param statusCode Error code if any, sometimes the containerClient throws html rest codes.
-   * @param message The message of the exception.
+   * @param message    The message of the exception.
    */
   public CustomAzureException(String actionType, String statusCode, String message) {
     this.actionType = actionType;

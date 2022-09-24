@@ -2,6 +2,7 @@ package azure.client.integration.mains;
 
 import azure.client.integration.service.ContainerService;
 import azure.client.integration.service.FileManagerService;
+import azure.client.integration.utils.PropertyGetter;
 import com.azure.storage.blob.BlobContainerClient;
 import lombok.Data;
 
@@ -43,9 +44,10 @@ public class MainConLogs {
     BlobContainerClient containerClient = containerService.createContainer();
 
     fileManagerService.downloadFile(fileNameInContainer, fileNameToDownload,
-        containerClient);
+        PropertyGetter.getLocalFolder(), containerClient);
 
-    fileManagerService.uploadFile(fileNameToUpload, containerClient);
+    fileManagerService.uploadFile(fileNameToUpload, PropertyGetter.getLocalFolder(),
+        containerClient);
 
   }
 
